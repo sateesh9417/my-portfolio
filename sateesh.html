@@ -1,0 +1,584 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Sateesh Mambakam — Portfolio</title>
+<link rel="icon" type="image/png" sizes="64x64" href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSMu995Cg4yWYv3OLMWWXSmUdX0FZzp6n10KQ&s">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg1: #3b1d82;
+  --bg2: #a83279;
+  --bg3: #ff8c42;
+  --green: #1ace35;
+  --darkgreen: #118122;
+  --accent: #f6c90e;
+  --muted: rgba(255,255,255,0.75);
+  --text: #fff;
+  --max-width: 1100px;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(120deg, var(--bg1), var(--bg2), var(--bg3));
+  background-size: 300% 300%;
+  animation: gradientShift 14s ease infinite;
+  color: var(--text);
+  line-height: 1.5;
+}
+@keyframes gradientShift {
+  0% { background-position: 0% 50% }
+  50% { background-position: 100% 50% }
+  100% { background-position: 0% 50% }
+}
+.wrap { max-width: var(--max-width); margin: 0 auto; padding: 28px; }
+
+/* Brand Section */
+header { display: flex; justify-content: space-between; flex-wrap: wrap; align-items: center; }
+.name {
+  font-size: 2.4rem;
+  font-weight: 700;
+  background: linear-gradient(90deg, var(--accent), #ff4081, #7c4dff);
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer 4s infinite;
+}
+@keyframes shimmer {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+.role {
+  color: var(--muted);
+  font-weight: 500;
+  font-size: 1.1rem;
+  height: 1.3rem;
+}
+.btn {
+  padding: 10px 14px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  text-decoration: none;
+  color: #000;
+  background: var(--accent);
+  transition: all 0.3s ease;
+}
+.btn:hover {
+  background: #ffd700;
+  transform: translateY(-2px);
+}
+
+/* Sections */
+.section {
+  margin-top: 40px;
+  padding: 20px;
+  background: rgba(0,0,0,0.25);
+  border-radius: 12px;
+  backdrop-filter: blur(4px);
+  opacity: 0;
+  transform: translateY(20px) scale(0.98);
+  transition: all 0.7s ease;
+}
+.section.visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+/* Company links inside Experience section */
+.section a {
+  color: var(--green);
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s ease, text-shadow 0.3s ease, transform 0.3s ease;
+  display: inline-block;
+}
+
+.section a:hover{
+    transform: scale(1.01);
+    color: rgb(0, 229, 255);
+}
+
+h3 {
+  margin-bottom: 12px;
+  color: var(--accent);
+  border-bottom: 2px solid var(--accent);
+  display: inline-block;
+  padding-bottom: 4px;
+}
+
+/* MEAN Stack Badge */
+.mean-badge {
+  width: 220px; height: 220px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.05);
+  display: flex; align-items: center; justify-content: center;
+  animation: float 6s ease-in-out infinite;
+  position: relative;
+  overflow: hidden;
+}
+.mean-badge::before {
+  content: '';
+  position: absolute;
+  width: 100%; height: 100%;
+  border-radius: 50%;
+  border: 4px solid var(--accent);
+  animation: pulse 3s infinite;
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0) }
+  50% { transform: translateY(-10px) }
+}
+@keyframes pulse {
+  0% { transform: scale(1); opacity: 0.6; }
+  50% { transform: scale(1.1); opacity: 0.2; }
+  100% { transform: scale(1); opacity: 0.6; }
+}
+.mean-badge {
+  width: 240px;
+  height: 240px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.05);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: float 6s ease-in-out infinite;
+  position: relative;
+}
+.glow-ring {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 4px solid var(--accent);
+  animation: pulse 3s infinite;
+}
+.mean-inner {
+  text-align: center;
+  z-index: 2;
+}
+.mean-icons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+}
+.icon-pill {
+  width: 56px;
+  height: 56px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255,255,255,0.08);
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+.icon-pill:hover { transform: scale(1.15) rotate(5deg); }
+.mean-label {
+  margin-top: 8px;
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+.mean-badge svg { width: 70%; height: 70%; transition: transform 0.4s ease; }
+.mean-badge:hover svg { transform: rotate(10deg) scale(1.05); }
+
+/* Cards */
+.card {
+  padding: 16px;
+  border-radius: 12px;
+  background: rgba(255,255,255,0.05);
+}
+.project-title { color: var(--accent); font-weight: 700; margin-bottom: 6px; }
+.project-desc { color: var(--muted); font-size: 0.95rem; margin-bottom: 10px; }
+.tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.tag {
+  font-size: 0.8rem;
+  padding: 4px 8px;
+  border-radius: 6px;
+  background: rgba(255,255,255,0.1);
+  transition: transform 0.2s ease;
+}
+.tag:hover { transform: scale(1.1); }
+
+/* Accordion Styles */
+.accordion-item {
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 8px;
+  margin-bottom: 12px;
+  overflow: hidden;
+  background: rgba(255,255,255,0.05);
+}
+
+.accordion-header {
+  width: 100%;
+  text-align: left;
+  padding: 12px 16px;
+  font-size: 1rem;
+  font-weight: 600;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--accent);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.accordion-header:hover {
+  background: rgba(255,255,255,0.08);
+}
+
+.accordion-icon {
+  font-size: 1.2rem;
+  transition: transform 0.3s ease;
+}
+
+.accordion-body {
+  max-height: 0;
+  overflow: hidden;
+  padding: 0 16px;
+  transition: max-height 0.4s ease, padding 0.3s ease;
+}
+
+.accordion-body p,
+.accordion-body ul {
+  margin: 6px 0;
+}
+
+.accordion-body ul {
+  padding-left: 18px;
+}
+
+.accordion-item.active .accordion-body {
+  max-height: 600px; /* Large enough for content */
+  padding: 12px 16px;
+}
+
+.accordion-item.active .accordion-icon {
+  transform: rotate(45deg);
+}
+
+/* Education Timeline */
+.education-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  border-left: 3px solid var(--accent);
+  margin-left: 24px;
+}
+.edu-item {
+  position: relative;
+}
+.edu-year {
+  position: absolute;
+  left: -28px;
+  top: 0;
+  background: var(--accent);
+  color: #000;
+  font-weight: bold;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+.edu-content{
+    position: relative;
+    left: 35px;
+}
+.edu-content h4 {
+  margin: 0;
+  font-size: 1rem;
+  color: var(--accent);
+}
+.edu-content p {
+  margin: 2px 0 0;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  header { flex-direction: column; align-items: flex-start; }
+  .mean-badge { margin: 20px auto 0; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <div>
+    <div class="name">Mambakam Sateesh</div>
+    <div class="role" id="roleText"></div>
+  </div>
+  <div style="display:flex;gap:10px;margin-top:10px;flex-wrap:wrap">
+    <a class="btn" href="mailto:mambakamsateesh234@gmail.com">Email</a>
+    <a class="btn" href="tel:6300580832">Call: 6300580832</a>
+    <a class="btn" href="https://www.linkedin.com/in/sateesh-mambakam" target="_blank">LinkedIn</a>
+  </div>
+</header>
+
+<!-- Hero -->
+<section class="section">
+  <div style="display:flex;flex-wrap:wrap;align-items:center;gap:20px">
+    <div style="flex:1;min-width:250px">
+      <h3>Hello 👋</h3>
+      <p>I build scalable, interactive applications using Angular, JavaScript, Html/Css, Node.js, Express.js, and MongoDB — delivering high-performance solutions with a focus on clean architecture and responsive UI/UX.</p>
+    </div>
+
+    <!-- Updated MEAN Badge -->
+    <div style="display:flex;align-items:center;justify-content:center">
+      <div class="mean-badge" aria-hidden="true">
+        <div class="glow-ring" aria-hidden="true"></div>
+        <div class="mean-inner" id="meanInner">
+          <div class="mean-icons">
+            <!-- Angular -->
+            <div class="icon-pill" title="Angular">
+              <svg width="44" height="44" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
+                <polygon points="128,18 238,74 203,206 128,238 53,206 18,74" fill="#DD0031"/>
+                <path d="M128 47 L172 180 L128 170 L84 180 Z" fill="#fff" opacity="0.9"/>
+              </svg>
+            </div>
+            <!-- Node.js -->
+            <div class="icon-pill" title="Node.js">
+              <svg width="44" height="44" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="128" cy="128" r="108" fill="#3C873A"/>
+                <text x="50%" y="58%" text-anchor="middle" font-family="Poppins" font-weight="700" font-size="70" fill="#fff">N</text>
+              </svg>
+            </div>
+            <!-- MongoDB -->
+            <div class="icon-pill" title="MongoDB">
+              <svg width="44" height="44" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <path d="M50 4 C58 20 70 28 66 46 C62 66 48 80 50 96 C34 80 30 64 26 52 C22 40 38 20 50 4 Z" fill="#66BB6A"/>
+              </svg>
+            </div>
+            <!-- Express -->
+            <div class="icon-pill" title="Express">
+              <svg width="44" height="44" viewBox="0 0 120 60" xmlns="http://www.w3.org/2000/svg">
+                <text x="50%" y="55%" text-anchor="middle" font-family="Poppins" font-weight="800" font-size="22" fill="#ffffff">Ex</text>
+              </svg>
+            </div>
+          </div>
+          <div class="mean-label">MEAN STACK</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Skills -->
+<section class="section">
+  <h3>Skills</h3>
+  <div style="display:flex;flex-wrap:wrap;gap:10px">
+    <div class="tag">Angular</div><div class="tag">Html/Html5</div><div class="tag">Css/Css3</div>
+    <div class="tag">JavaScript</div><div class="tag">Bootstrap</div><div class="tag">Angular Material</div><div class="tag">PrimeNg</div>
+    <div class="tag">Ionic Framework</div><div class="tag">Node.js</div><div class="tag">Unit Testing</div>
+    <div class="tag">Express.js</div><div class="tag">MongoDB</div><div class="tag">RxJS</div>
+    <div class="tag">NgRx</div><div class="tag">Azure</div><div class="tag">Git</div><div class="tag">GitHub</div>
+    <div class="tag">Postman</div><div class="tag">Swagger</div>
+  </div>
+</section>
+
+<!-- Projects -->
+<section class="section">
+  <h3>Experience</h3>
+  <div style="display:grid;gap:14px">
+    <div class="card">
+      <strong><a href="https://www.bounteous.com/" target="_blank">Bounteous x Accolite</a></strong> — Senior Software Engineer (2024–Present)
+      <ul>
+        <li>Led Angular + NgRx application development for enterprise clients.</li>
+        <li>Implemented CI/CD pipelines & code review standards.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <strong><a href="https://baygrape.com/" target="_blank">BayGrape Technology Solutions</a></strong> — Software Engineer (2022–2024)
+      <ul>
+        <li>Developed gifting portal with secure payment integration.</li>
+        <li>Optimized performance & UX with best practices.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <strong><a href="https://technoelevate.com/#/home" target="_blank">Test Yantra (Technoelevate)</a></strong> — Software Engineer (2021–2022)
+      <ul>
+        <li>Built web applications using Angular, Node.js, and MongoDB.</li>
+        <li>Collaborated with clients to gather requirements and deliver timely releases.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <strong><a href="http://www.jspiders.com/" target="_blank">JSpiders</a></strong> — Java Full Stack Trainee (2020–2021)
+      <ul>
+        <li>Trained in Java, JDBC, Servlets, JSP, and database concepts.</li>
+        <li>Completed multiple real-time projects to strengthen coding skills.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- Projects Section -->
+<section class="section" id="projects">
+  <h3>Projects</h3>
+
+  <div class="accordion">
+
+    <!-- Bounteous -->
+    <div class="accordion-item">
+      <button class="accordion-header">
+        <span>Bounteous x Accolite</span>
+        <span class="accordion-icon">+</span>
+      </button>
+      <div class="accordion-body">
+        <p><strong>Project #1:</strong> INTERNAL AUDIT TECH ASSURANCE HUB</p>
+        <p><strong>Technologies:</strong> Angular, HTML/CSS, RxJs, NgRx, Unit Testing</p>
+        <p><strong>Client:</strong> Morgan Stanley</p>
+        <p><strong>Role:</strong> Team Member</p>
+        <p><strong>Description:</strong> Assurance Hub is Internal Audit’s platform for streamlined planning, risk assessment, and audit execution with modern features and enhanced collaboration.</p>
+      </div>
+    </div>
+
+    <!-- Baygrape -->
+    <div class="accordion-item">
+      <button class="accordion-header">
+        <span>BayGrape Technology Solutions</span>
+        <span class="accordion-icon">+</span>
+      </button>
+      <div class="accordion-body">
+        <p><strong>Project #1:</strong> DoroNow (Gifting Portal)</p>
+        <p><strong>Technologies:</strong> Angular, .Net, PostgreSQL</p>
+        <p><strong>Role:</strong> Team Member</p>
+        <p><strong>Description:</strong> DoroNow is a gifting portal where users can purchase branded gifts for personal use or gifting to friends and family.</p>
+        <p><strong>Key Result Areas:</strong></p>
+        <ul>
+          <li>Analysed Functional Requirements, implemented UI, and integrated backend APIs.</li>
+        </ul>
+        <p><strong>Achievements:</strong></p>
+        <ul>
+          <li>Developed a seamless gift selection and purchasing process.</li>
+          <li>Implemented secure payment integration.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Test Yantra -->
+    <div class="accordion-item">
+      <button class="accordion-header">
+        <span>Test Yantra (Technoelevate)</span>
+        <span class="accordion-icon">+</span>
+      </button>
+      <div class="accordion-body">
+        <p><strong>Project #1:</strong> Tvam</p>
+        <p><strong>Technologies:</strong> Angular, Angular Material, MongoDB, Node.js</p>
+        <p><strong>Role:</strong> Team Member</p>
+        <p><strong>Description:</strong> Socio-business platform providing personalized information on government schemes, financial products, healthcare, and business services.</p>
+
+        <p style="padding-top: 20px;"><strong>Project #2:</strong> VISTA (Web App)</p>
+        <p><strong>Technologies:</strong> Angular, Angular Material, Bootstrap, Node.js, MongoDB</p>
+        <p><strong>Role:</strong> Team Member</p>
+        <p><strong>Description:</strong> Secure cashless payment solution for banks, merchants, and partners with modules like NrollMe, NETC, and M-Portal.</p>
+      </div>
+    </div>
+
+    <!-- JSpiders -->
+    <div class="accordion-item">
+      <button class="accordion-header">
+        <span>JSpiders</span>
+        <span class="accordion-icon">+</span>
+      </button>
+      <div class="accordion-body">
+        <p><strong>Project #1:</strong> Simple Web Application</p>
+        <p><strong>Technologies:</strong> Angular, Bootstrap, MongoDB, Node.js, Express.js</p>
+        <p><strong>Role:</strong> Team Member</p>
+        <p><strong>Description:</strong> Its a web app having basic features like login, register page along with some users crud operation to manipulating the user's data.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- Education Section -->
+<section class="section" id="education">
+  <h3>Education</h3>
+  <div class="education-timeline">
+    <div class="edu-item">
+      <span class="edu-year">2020</span>
+      <div class="edu-content">
+        <h4>B.Tech. in Mechanical Engineering - (CGPA) 8.36</h4>
+        <p>Gokula Krishna College of Engineering (JNTUA), Sullurpeta</p>
+      </div>
+    </div>
+    <div class="edu-item">
+      <span class="edu-year">2016</span>
+      <div class="edu-content">
+        <h4>Senior Secondary (12th) - (CGPA) 9.2</h4>
+        <p>Vikram Jr College, Srikalahasti</p>
+      </div>
+    </div>
+    <div class="edu-item">
+      <span class="edu-year">2014</span>
+      <div class="edu-content">
+        <h4>Secondary (10th) - (CGPA) 8.3</h4>
+        <p>Z.P High School, Rajulakandriga</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer style="text-align:center;margin-top:30px;color:var(--muted)">
+  © 2025 Mambakam Sateesh — Built with passion
+</footer>
+</div>
+
+<script>
+// Typing effect for role
+const roles = [
+  "MEAN Stack Developer",
+  "Angular Expert",
+  "Web Developer",
+  "Full Stack Engineer",
+  "Mobile App Developer",
+  "Ionic Developer",
+  "JavaScript Enthusiast"
+];
+let roleIndex = 0, charIndex = 0, deleting = false;
+const roleText = document.getElementById('roleText');
+
+function typeRole() {
+  const current = roles[roleIndex];
+  if (!deleting) {
+    roleText.textContent = current.slice(0, ++charIndex);
+    if (charIndex === current.length) {
+      deleting = true;
+      setTimeout(typeRole, 1500);
+      return;
+    }
+  } else {
+    roleText.textContent = current.slice(0, --charIndex);
+    if (charIndex === 0) {
+      deleting = false;
+      roleIndex = (roleIndex + 1) % roles.length;
+    }
+  }
+  setTimeout(typeRole, deleting ? 50 : 100);
+}
+typeRole();
+
+// Reveal on scroll
+const sections = document.querySelectorAll('.section');
+const obs = new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting) entry.target.classList.add('visible');
+  });
+},{threshold:0.1});
+sections.forEach(sec=>obs.observe(sec));
+
+document.querySelectorAll(".accordion-header").forEach(header => {
+  header.addEventListener("click", () => {
+    const item = header.parentElement;
+    item.classList.toggle("active");
+  });
+});
+</script>
+</body>
+</html>
